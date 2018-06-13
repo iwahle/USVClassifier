@@ -1,0 +1,23 @@
+train_main: main script for training new model
+predict_main: main script for predicting annotations for spectrograms
+helper functions:
+	- syl_filter
+		- consecutive_ones
+	- fill_gaps
+	- pca_red
+	- process_labels
+	- single_chunk
+	- disp_syls (displays all positive syllables side by side)
+other functions that aren't being used right now but that might be useful
+	- kmeansclustering: preliminary clustering method for a spectrogram
+	- kmeansfolder: same as kmeansclustering but on a folder of spectrograms
+	- prec_rec: calculates precision, recall, and f1 score
+	- single_chunk2: instead of giving training examples as vectorized chunks,
+			 gives them as a vector with the current frame, the mean over
+			 the chunk, and the standard deviation over the chunk
+
+mdl1_net.m is a trained model with 3x as many negatives as there are positive examples.
+It adds noise scaled by 0, 0.75, and -0.75 and normalizes before and after. 
+It reduces down to 60 features with PCA.
+In-sample performance is: prec = 93.7605, rec = 76.1433, f1s = 84.0385.
+Still has trouble picking up all of the syllables out-of-sample. 
